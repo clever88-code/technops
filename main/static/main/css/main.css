@@ -1,24 +1,13 @@
-body {
-    background-color: #cfcbbf;
+
+.footer {
+
+     position: fixed;
+     right: 0;
+     bottom: 0;
+     text-align: center; 
+     width: 99%;   
+     font-size: 15px;
+  font-weight: bold;
+    color: rgb(20, 20, 22);  
 }
 
-
-.price{
-    font-weight: bold;
-}
-
-
-#SignupContent {
-    max-width: 600px;
-    background-color: white;
-    border-radius: 4px;
-}
-
-@media screen and (max-width: 600px) {
-    #SignupContent {
-            height: 100%;
-    }
-#materialToolbar {
-        padding: 10px;
-}
-}
