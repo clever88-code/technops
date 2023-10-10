@@ -1,0 +1,36 @@
+
+
+{% extends 'main/start.html' %}
+
+
+
+{% load static %}
+
+{% block title %}
+    <title>TechnoPС</title>
+{% endblock %}
+
+{% block body %}
+
+
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Большой ассортимент новой техники</h1>
+        <p class="lead text-muted">Наша сеть магазинов предлагает вам технику высшего качества!</p>
+        <p>
+          {% if user.is_authenticated %}
+          <a href="{% url 'shop' %}" class="btn btn-primary my-2">Купить сейчас</a>
+          {% else %}
+          <a href="{% url 'reg' %}" class="btn btn-primary my-2">Купить сейчас</a>
+          <h1 class="lead text-muted">Но сначала нужна регистрация </h1>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  {% endblock %}

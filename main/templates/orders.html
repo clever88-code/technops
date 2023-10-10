@@ -1,0 +1,82 @@
+{% extends 'main/start.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Заказ{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container d-flex justify-content-center align-items-center mx-auto py-4">
+
+        <form method="post">
+            <h1>Заказ</h1>
+            {% csrf_token %}
+
+
+            {{ form|crispy }}
+{#            {% for f in form %}#}
+{#                <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>#}
+{#                <div class="form-error">{{ f.errors }}</div>#}
+{#            {% endfor %}#}
+            <br>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="clicks();" >Заказать</button>
+        </form>
+    </div>
+    <script>
+        IMask(document.getElementById('id_date'), {
+          mask: Date,
+          pattern: 'DD.MM.YYYY HH:mm',
+          lazy: false,
+    
+          format: function (date) {
+            return moment(date).format('DD.MM.YYYY HH:mm');
+          },
+          parse: function (str) {
+            return moment(str, 'DD.MM.YYYY HH:mm');
+          },
+    
+          blocks: {
+            YYYY: {
+              mask: IMask.MaskedRange,
+              from: 2020,
+              to: 2050
+            },
+            MM: {
+              mask: IMask.MaskedRange,
+              from: 1,
+              to: 12
+            },
+            DD: {
+              mask: IMask.MaskedRange,
+              from: 1,
+              to: 31
+            },
+            HH: {
+              mask: IMask.MaskedRange,
+              from: 0,
+              to: 23
+            },
+            mm: {
+              mask: IMask.MaskedRange,
+              from: 0,
+              to: 59
+            }
+          }
+        })
+    </script>
+    <script>
+        $('#id_date').datetimepicker({
+            container:'body',
+            language:'ru',
+            minuteStep:5,
+            format:'dd.mm.yyyy hh:ii',
+            weekStart:1,
+            startDate: new Date()
+        })
+    
+    </script>
+{% endblock %}
